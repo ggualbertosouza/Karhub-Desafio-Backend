@@ -1,7 +1,19 @@
 package main
 
-import test "github/ggualbertosouza/Karhub-Desafio-Backend/src/internals"
+import (
+	"github/ggualbertosouza/Karhub-Desafio-Backend/src/server"
+	serverConfig "github/ggualbertosouza/Karhub-Desafio-Backend/src/server/config"
+	"log"
+)
 
 func main() {
-	test.RunTest()
+	cfg, err := serverConfig.LoadConfig()
+	if err != nil {
+		log.Fatalf("Error while starting environment variables: %v", err)
+	}
+
+	router := server.NewRouter()
+	srv := server.NewServer(router, cfg)
+
+	srv.Start()
 }
