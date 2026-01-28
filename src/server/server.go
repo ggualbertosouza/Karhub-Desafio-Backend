@@ -38,7 +38,7 @@ func (s *Server) Start() {
 	signal.Notify(stop, os.Interrupt, syscall.SIGTERM, syscall.SIGINT)
 
 	go func() {
-		log.Printf("Server running")
+		log.Printf("Server running: %s:%d", s.config.App.Host, s.config.App.Port)
 
 		err := s.httpServer.ListenAndServe()
 		if err != nil && err != http.ErrServerClosed {

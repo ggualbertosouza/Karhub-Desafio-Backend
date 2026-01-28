@@ -2,6 +2,7 @@ package serverConfig
 
 import (
 	"errors"
+	"log"
 	"os"
 	"strconv"
 
@@ -10,7 +11,6 @@ import (
 
 func LoadConfig() (*EnvConfig, error) {
 	initEnv()
-	loadDotEnv()
 
 	cfg := &EnvConfig{}
 	setDefaults(cfg)
@@ -19,6 +19,7 @@ func LoadConfig() (*EnvConfig, error) {
 		return nil, err
 	}
 
+	log.Printf("Environment variables setted up, using %s Env", cfg.App.Environment)
 	return cfg, nil
 }
 
@@ -26,17 +27,8 @@ func initEnv() {
 	if os.Getenv("APP_ENV") == "" {
 		os.Setenv("APP_ENV", "development")
 	}
-}
 
-func loadDotEnv() {
-	env := os.Getenv("APP_ENV")
-
-	filename := ".env"
-	if env == "production" {
-		filename = ".env.production"
-	}
-
-	_ = godotenv.Load(filename)
+	_ = godotenv.Load(".env")
 }
 
 func setDefaults(cfg *EnvConfig) {

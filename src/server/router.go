@@ -1,12 +1,12 @@
 package server
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
-func NewRouter() *gin.Engine {
+func NewRouter(env string) *gin.Engine {
+	setGinMode(env)
+
 	router := gin.New()
 
 	router.GET("/health", healthCheck)
@@ -14,8 +14,10 @@ func NewRouter() *gin.Engine {
 	return router
 }
 
-func healthCheck(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{
-		"status": "Healthy",
-	})
+func setGinMode(env string) {
+	if env == "production" {
+		gin.SetMode(gin.ReleaseMode)
+	} else {
+		gin.SetMode(gin.DebugMode)
+	}
 }

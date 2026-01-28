@@ -12,7 +12,7 @@ func main() {
 		log.Fatalf("Error while starting environment variables: %v", err)
 	}
 
-	router := server.NewRouter()
+	router := server.NewRouter(cfg.App.Environment)
 	srv := server.NewServer(router, cfg)
 
 	srv.Start()
