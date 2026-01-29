@@ -7,6 +7,9 @@ IMAGE_TAG := latest
 run-dev:
 	air
 
+run-tests:
+	go test -v ./...
+
 build:
 	@echo "Building image"
 	docker build \
