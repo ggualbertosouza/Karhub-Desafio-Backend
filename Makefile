@@ -1,15 +1,26 @@
 APP_DIR := ./src/cmd
 IMAGE_NAME := beershop
 IMAGE_TAG := latest
+DEV_COMPOSE := compose.dev.yml
 
-.PHONY: run-dev build run-prod stop clear
+.PHONY: run-dev build run-prod stop clear db-dev-up db-dev-down
 
+# Development
 run-dev:
 	air
 
 run-tests:
 	go test -v ./...
 
+db-dev-up:
+	@echo "Starting development database..."
+	docker compose -f $(DEV_COMPOSE) up -d
+
+db-dev-down:
+	@echo "Stopping development database..."
+	docker compose -f $(DEV_COMPOSE) down
+
+# Production
 build:
 	@echo "Building image"
 	docker build \
