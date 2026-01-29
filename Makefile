@@ -5,7 +5,7 @@ IMAGE_TAG := latest
 .PHONY: run-dev build run-prod stop clear
 
 run-dev:
-	go run $(APP_DIR)/main.go
+	air
 
 build:
 	@echo "Building image"
@@ -17,15 +17,20 @@ build:
 run-prod: stop build
 	@echo "Running container"
 	docker run -d \
+		--env-file .env \
 		-p 3001:3001 \
 		--name $(IMAGE_NAME) \
 		$(IMAGE_NAME):$(IMAGE_TAG)
 
 stop:
-	@echo "Stopping container (if exists)"
+	@echo "Stopping container"
 	- docker stop $(IMAGE_NAME)
 	- docker rm $(IMAGE_NAME)
 
 clear: stop
 	@echo "Cleaning image"
 	- docker rmi $(IMAGE_NAME):$(IMAGE_TAG)
+
+logs:
+	@echo "Opening logs"
+	docker logs -f $(IMAGE_NAME)
