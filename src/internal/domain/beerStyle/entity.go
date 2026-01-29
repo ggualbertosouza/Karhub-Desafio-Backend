@@ -13,11 +13,12 @@ const (
 )
 
 type BeerStyle struct {
-	ID      uuid.UUID
-	Name    string
-	Type    TemperatureType
-	MinTemp float64
-	MaxTemp float64
+	ID       uuid.UUID
+	Name     string
+	Active   bool
+	TempType TemperatureType
+	MinTemp  float64
+	MaxTemp  float64
 }
 
 func (b *BeerStyle) AverageTemperature() float64 {

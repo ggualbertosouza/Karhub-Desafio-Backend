@@ -3,7 +3,7 @@ IMAGE_NAME := beershop
 IMAGE_TAG := latest
 DEV_COMPOSE := compose.dev.yml
 
-.PHONY: run-dev build run-prod stop clear db-dev-up db-dev-down
+.PHONY: run-dev build run-prod stop clear db-dev-up db-dev-down db-dev-logs
 
 # Development
 run-dev:
@@ -19,6 +19,9 @@ db-dev-up:
 db-dev-down:
 	@echo "Stopping development database..."
 	docker compose -f $(DEV_COMPOSE) down
+
+db-dev-logs:
+	docker compose -f $(DEV_COMPOSE) logs -f postgres
 
 # Production
 build:

@@ -7,6 +7,7 @@ import (
 func New(
 	id *uuid.UUID,
 	name string,
+	active *bool,
 	minTemp, maxTemp float64,
 	tempType *TemperatureType,
 ) (*BeerStyle, error) {
@@ -21,12 +22,18 @@ func New(
 		styleID = *id
 	}
 
+	bsActive := true
+	if active != nil {
+		bsActive = *active
+	}
+
 	return &BeerStyle{
-		ID:      styleID,
-		Name:    name,
-		Type:    validTempType,
-		MinTemp: minTemp,
-		MaxTemp: maxTemp,
+		ID:       styleID,
+		Name:     name,
+		Active:   bsActive,
+		TempType: validTempType,
+		MinTemp:  minTemp,
+		MaxTemp:  maxTemp,
 	}, nil
 }
 

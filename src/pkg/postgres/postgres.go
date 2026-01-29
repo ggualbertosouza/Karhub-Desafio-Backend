@@ -40,6 +40,6 @@ func Connect(cfg Config) error {
 	}
 
 	PostgresDb = db
-	log.Println("Databse connected.")
+	log.Println("Database connected.")
 	return nil
 }

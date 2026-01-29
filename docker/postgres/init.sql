@@ -1,0 +1,8 @@
+CREATE TABLE beer_styles (
+    id UUID PRIMARY KEY,
+    active BOOLEAN NOT NULL DEFAULT TRUE,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    min_temp DOUBLE PRECISION NOT NULL,
+    max_temp DOUBLE PRECISION NOT NULL,
+    type_temp VARCHAR(25) NOT NULL
+)

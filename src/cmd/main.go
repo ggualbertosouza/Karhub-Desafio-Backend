@@ -1,13 +1,24 @@
 package main
 
 import (
+	"context"
+	InMemoryCache "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/infra/cache/inMemory"
 	"github/ggualbertosouza/Karhub-Desafio-Backend/src/pkg/postgres"
 	"github/ggualbertosouza/Karhub-Desafio-Backend/src/server"
 	serverConfig "github/ggualbertosouza/Karhub-Desafio-Backend/src/server/config"
 	"log"
+	"os"
+	"os/signal"
+	"syscall"
 )
 
 func main() {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, os.Interrupt, syscall.SIGTERM, syscall.SIGINT)
+
 	// Environment config
 	cfg, err := serverConfig.LoadConfig()
 	if err != nil {
@@ -27,8 +38,23 @@ func main() {
 		log.Fatalf("Failed to connect to postgres: %v", err)
 	}
 
+	// Cache init
+	if err := InMemoryCache.InitBeerStyleCache(ctx); err != nil {
+		log.Fatal(err)
+	}
+
 	router := server.NewRouter(cfg.App.Environment)
 	srv := server.NewServer(router, cfg)
 
-	srv.Start()
+	go func() {
+		if err := srv.Start(ctx); err != nil {
+			log.Println(err)
+		}
+	}()
+
+	<-stop
+	log.Println("Shutdown signal received")
+
+	cancel()
+	InMemoryCache.CloseBeerStyleCache()
 }

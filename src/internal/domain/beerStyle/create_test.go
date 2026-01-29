@@ -11,7 +11,7 @@ func Test_ValidPayload(t *testing.T) {
 	minTemp := -7.0
 	maxtemp := 10.0
 
-	beerStyle, err := New(nil, name, minTemp, maxtemp, nil)
+	beerStyle, err := New(nil, name, nil, minTemp, maxtemp, nil)
 
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)
@@ -25,14 +25,14 @@ func Test_ValidPayload(t *testing.T) {
 		t.Errorf("expected name %s, got %s", name, beerStyle.Name)
 	}
 
-	if beerStyle.Type != Celsius {
-		t.Errorf("expected temperature type %s, got %s", Celsius, beerStyle.Type)
+	if beerStyle.TempType != Celsius {
+		t.Errorf("expected temperature type %s, got %s", Celsius, beerStyle.TempType)
 	}
 }
 
 // Deve calcular corretamente a temperatura média de um BeerStyle
 func Test_CalculateAverage(t *testing.T) {
-	beerStyle, _ := New(nil, "Test", -4, 2, nil)
+	beerStyle, _ := New(nil, "Test", nil, -4, 2, nil)
 
 	avg := beerStyle.AverageTemperature()
 
@@ -48,7 +48,7 @@ func Test_EmptyName(t *testing.T) {
 	minTemp := 2.0
 	maxtemp := 3.0
 
-	_, err := New(nil, name, minTemp, maxtemp, nil)
+	_, err := New(nil, name, nil, minTemp, maxtemp, nil)
 
 	if err == nil {
 		t.Fatal("expected error, got nil.")
@@ -65,7 +65,7 @@ func Test_MinTempGreaterThanMax(t *testing.T) {
 	minTemp := 3.0
 	maxtemp := 2.0
 
-	_, err := New(nil, name, minTemp, maxtemp, nil)
+	_, err := New(nil, name, nil, minTemp, maxtemp, nil)
 
 	if err == nil {
 		t.Fatal("expected error, got nil.")
@@ -80,7 +80,7 @@ func Test_MinTempGreaterThanMax(t *testing.T) {
 func Test_TemperatureTypeErr(t *testing.T) {
 	tempType := "Non exist"
 
-	_, err := New(nil, "TempTest", -5, 5, (*TemperatureType)(&tempType))
+	_, err := New(nil, "TempTest", nil, -5, 5, (*TemperatureType)(&tempType))
 
 	if err == nil {
 		t.Fatalf("expected error, got nil")
