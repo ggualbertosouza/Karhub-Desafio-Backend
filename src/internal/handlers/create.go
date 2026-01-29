@@ -4,6 +4,7 @@ import (
 	BeerStyleEntity "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/domain/beerStyle"
 	BeerStyleDtos "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/handlers/Dtos"
 	HttpContext "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/http/context"
+	InMemoryCache "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/infra/cache/inMemory"
 	BsRepository "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/infra/repositories"
 	"github/ggualbertosouza/Karhub-Desafio-Backend/src/pkg/postgres"
 
@@ -30,5 +31,6 @@ func CreateBs(ctx *gin.Context) {
 		return
 	}
 
+	InMemoryCache.BsCache.Populate(ctx)
 	HttpContext.ResourceCreated(ctx, "Beer Style")
 }

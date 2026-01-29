@@ -3,6 +3,7 @@ package BeerStyleHandler
 import (
 	BeerStyleDtos "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/handlers/Dtos"
 	HttpContext "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/http/context"
+	InMemoryCache "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/infra/cache/inMemory"
 	BsRepository "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/infra/repositories"
 	"github/ggualbertosouza/Karhub-Desafio-Backend/src/pkg/postgres"
 
@@ -44,5 +45,6 @@ func UpdateBs(ctx *gin.Context) {
 		return
 	}
 
+	InMemoryCache.BsCache.Populate(ctx)
 	HttpContext.ResourceUpdated(ctx, "Beer Style")
 }
