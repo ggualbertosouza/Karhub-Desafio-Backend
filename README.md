@@ -8,9 +8,9 @@ Este repositório contém a implementação do backend desenvolvida como parte d
 
 A documentação do projeto foi separada para facilitar a navegação:
 
-- [`GENERAL.md`](./GENERAL.md) — visão geral, regras de negócio e decisões arquiteturais
-- [`RUNNING.md`](./RUNNING.md) — como rodar a aplicação
-- [`SCRIPTS.md`](./SCRIPTS.md) — scripts auxiliares (init.sql e seed.sh)
+- [`general.md`](./doc/general.md) — visão geral, regras de negócio e decisões arquiteturais
+- [`running.md`](./doc/running.md) — como rodar a aplicação
+- [`scripts.md`](./doc/scripts.md) — scripts auxiliares (init.sql e seed.sh)
 
 ---
 
