@@ -11,6 +11,7 @@ A documentação do projeto foi separada para facilitar a navegação:
 - [`general.md`](./doc/general.md) — visão geral, regras de negócio e decisões arquiteturais
 - [`running.md`](./doc/running.md) — como rodar a aplicação
 - [`scripts.md`](./doc/scripts.md) — scripts auxiliares (init.sql e seed.sh)
+- [`tests.md`](./doc/tests.md) — testes de carga realizados
 
 ---
 

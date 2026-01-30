@@ -43,6 +43,10 @@ func main() {
 		log.Fatal(err)
 	}
 
+	if err := InMemoryCache.InitPlaylistMockCache(cfg.Mocks.Path); err != nil {
+		log.Fatal(err)
+	}
+
 	router := server.NewRouter(cfg.App.Environment)
 	srv := server.NewServer(router, cfg)
 

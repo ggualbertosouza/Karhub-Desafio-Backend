@@ -3,6 +3,7 @@ package BeerStyleHandler
 import (
 	"errors"
 	BeerStyleEntity "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/domain/beerStyle"
+	SpotifyEntity "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/domain/spotify"
 	HttpContext "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/http/context"
 	InMemoryCache "github/ggualbertosouza/Karhub-Desafio-Backend/src/internal/infra/cache/inMemory"
 	"math"
@@ -38,8 +39,11 @@ func GetByTemperature(ctx *gin.Context) {
 		return
 	}
 
+	playlist, _ := getPlaylisyByBsName(selected.Name)
+
 	ctx.JSON(http.StatusOK, gin.H{
 		"beerStyle": selected.Name,
+		"playlist":  playlist,
 	})
 }
 
@@ -78,4 +82,13 @@ func SelectBeerStyleByTemperature(
 		selected.MaxTemp,
 		nil,
 	)
+}
+
+func getPlaylisyByBsName(name string) (*SpotifyEntity.Playlist, error) {
+	playlist, err := InMemoryCache.PlaylistMockCache.Get(name)
+	if err != nil {
+		return nil, err
+	}
+
+	return playlist, nil
 }

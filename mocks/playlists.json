@@ -1,0 +1,145 @@
+{
+  "Weissbier": {
+    "name": "Weiss Chill",
+    "tracks": [
+      {
+        "name": "Take Five",
+        "artist": "Dave Brubeck",
+        "link": "https://open.spotify.com/track/1"
+      },
+      {
+        "name": "So What",
+        "artist": "Miles Davis",
+        "link": "https://open.spotify.com/track/2"
+      }
+    ]
+  },
+
+  "Pilsens": {
+    "name": "Pilsen Classics",
+    "tracks": [
+      {
+        "name": "Sweet Child O' Mine",
+        "artist": "Guns N' Roses",
+        "link": "https://open.spotify.com/track/3"
+      },
+      {
+        "name": "Livin' on a Prayer",
+        "artist": "Bon Jovi",
+        "link": "https://open.spotify.com/track/4"
+      }
+    ]
+  },
+
+  "Weizenbier": {
+    "name": "Weizen Vibes",
+    "tracks": [
+      {
+        "name": "Island in the Sun",
+        "artist": "Weezer",
+        "link": "https://open.spotify.com/track/5"
+      },
+      {
+        "name": "Sunday Morning",
+        "artist": "Maroon 5",
+        "link": "https://open.spotify.com/track/6"
+      }
+    ]
+  },
+
+  "Red ale": {
+    "name": "Red Ale Rock",
+    "tracks": [
+      {
+        "name": "Back in Black",
+        "artist": "AC/DC",
+        "link": "https://open.spotify.com/track/7"
+      },
+      {
+        "name": "Paint It, Black",
+        "artist": "The Rolling Stones",
+        "link": "https://open.spotify.com/track/8"
+      }
+    ]
+  },
+
+  "India pale ale": {
+    "name": "India Pale Grooves",
+    "tracks": [
+      {
+        "name": "Feel Good Inc.",
+        "artist": "Gorillaz",
+        "link": "https://open.spotify.com/track/9"
+      },
+      {
+        "name": "Electric Feel",
+        "artist": "MGMT",
+        "link": "https://open.spotify.com/track/10"
+      }
+    ]
+  },
+
+  "IPA": {
+    "name": "IPARTY",
+    "tracks": [
+      {
+        "name": "Lua de Cristal",
+        "artist": "Xuxa",
+        "link": "https://open.spotify.com/track/11"
+      },
+      {
+        "name": "Vogue",
+        "artist": "Madonna",
+        "link": "https://open.spotify.com/track/12"
+      }
+    ]
+  },
+
+  "Dunkel": {
+    "name": "Dunkel Mood",
+    "tracks": [
+      {
+        "name": "Hurt",
+        "artist": "Johnny Cash",
+        "link": "https://open.spotify.com/track/13"
+      },
+      {
+        "name": "The Sound of Silence",
+        "artist": "Simon & Garfunkel",
+        "link": "https://open.spotify.com/track/14"
+      }
+    ]
+  },
+
+  "Imperial Stouts": {
+    "name": "Imperial Darkness",
+    "tracks": [
+      {
+        "name": "Black",
+        "artist": "Pearl Jam",
+        "link": "https://open.spotify.com/track/15"
+      },
+      {
+        "name": "Enter Sandman",
+        "artist": "Metallica",
+        "link": "https://open.spotify.com/track/16"
+      }
+    ]
+  },
+
+  "Brown ale": {
+    "name": "Brown Ale Acoustic",
+    "tracks": [
+      {
+        "name": "Wonderwall",
+        "artist": "Oasis",
+        "link": "https://open.spotify.com/track/17"
+      },
+      {
+        "name": "Blackbird",
+        "artist": "The Beatles",
+        "link": "https://open.spotify.com/track/18"
+      }
+    ]
+  }
+}

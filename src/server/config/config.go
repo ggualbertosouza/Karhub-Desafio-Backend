@@ -1,8 +1,9 @@
 package serverConfig
 
 type EnvConfig struct {
-	App AppConfig
-	Db  DbConfig
+	App   AppConfig
+	Db    DbConfig
+	Mocks SpotifyMock
 }
 
 type AppConfig struct {
@@ -18,4 +19,8 @@ type DbConfig struct {
 	User     string
 	Password string
 	SSLMode  string
+}
+
+type SpotifyMock struct {
+	Path string
 }

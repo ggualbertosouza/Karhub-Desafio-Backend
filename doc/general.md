@@ -25,6 +25,10 @@ No momento do desenvolvimento, a **API do Spotify não permitia a criação de n
 Por esse motivo:
 - A integração com o Spotify **não foi ativada**
 
+Para manter a aplicação funcional e testável mesmo sem acesso à API oficial do Spotify, a integração externa foi abstraída por meio de um mock baseado em arquivo JSON.
+
+Esse mock simula playlists associadas a cada estilo de cerveja e é carregado no startup da aplicação, permanecendo em memória durante toda a execução.
+
 ---
 
 ## Cache em Memória (BeerStyleCache)
