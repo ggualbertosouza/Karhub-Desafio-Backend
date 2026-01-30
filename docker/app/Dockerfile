@@ -15,6 +15,7 @@ FROM gcr.io/distroless/base-debian12
 WORKDIR /app
 
 COPY --from=builder /app/app .
+COPY mocks ./mocks
 
 EXPOSE 3001
 

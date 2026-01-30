@@ -66,6 +66,8 @@ func setDefaults(cfg *EnvConfig) {
 	if cfg.Db.SSLMode == "" {
 		cfg.Db.SSLMode = "disable"
 	}
+
+	cfg.Mocks.Path = os.Getenv("PLAYLIST_MOCK_PATH")
 }
 
 func validate(cfg *EnvConfig) error {
